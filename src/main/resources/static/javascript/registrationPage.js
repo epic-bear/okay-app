@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm-password');
     const submitButton = document.querySelector('button[type="submit"]');
     const errorMessage = document.getElementById('error-message');
 
-    confirmPasswordInput.addEventListener('input', function() {
+    confirmPasswordInput.addEventListener('input', function () {
         if (passwordInput.value === confirmPasswordInput.value) {
             confirmPasswordInput.setCustomValidity('');
             errorMessage.style.display = 'none';
@@ -13,13 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    submitButton.addEventListener('click', function(event) {
+    submitButton.addEventListener('click', function (event) {
         if (passwordInput.value !== confirmPasswordInput.value) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
             confirmPasswordInput.setCustomValidity('Passwords must match');
             errorMessage.style.display = 'block';
-
-            // Display message in popup for 2 seconds
             errorMessage.style.backgroundColor = '#011936FF';
             errorMessage.style.color = '#ED254EFF';
             errorMessage.style.position = 'fixed';
@@ -30,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
             errorMessage.style.borderRadius = '30px';
             errorMessage.style.zIndex = '9999';
 
-            setTimeout(function() {
+            setTimeout(function () {
                 errorMessage.style.display = 'none';
-            }, 2000); // 2000 milliseconds = 2 seconds
+            }, 2000);
         }
     });
 });
