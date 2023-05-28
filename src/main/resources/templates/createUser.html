@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create User</title>
+    <link th:href="@{/styles/registration-style.css}" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form action="/user" method="post">
+    <h1>Registration</h1>
+    <div class="form-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-row">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-row">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-row">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+    </div>
+    <span id="error-message" style="display: none;">Passwords must match</span>
+
+    <div class="button-row">
+        <button type="submit">SUBMIT</button>
+    </div>
+
+    <script src="/javascript/registrationPage.js"></script>
+</form>
+</body>
+</html>
