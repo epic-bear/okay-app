@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm-password');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
     const submitButton = document.querySelector('button[type="submit"]');
     const errorMessage = document.getElementById('error-message');
 
@@ -14,24 +16,63 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     submitButton.addEventListener('click', function (event) {
-        if (passwordInput.value !== confirmPasswordInput.value) {
-            event.preventDefault();
-            confirmPasswordInput.setCustomValidity('Passwords must match');
-            errorMessage.style.display = 'block';
-            errorMessage.style.backgroundColor = '#011936FF';
-            errorMessage.style.color = '#ED254EFF';
-            errorMessage.style.position = 'fixed';
-            errorMessage.style.top = '50%';
-            errorMessage.style.left = '50%';
-            errorMessage.style.transform = 'translate(-50%, -50%)';
-            errorMessage.style.padding = '10px';
-            errorMessage.style.borderRadius = '30px';
-            errorMessage.style.zIndex = '9999';
+        event.preventDefault();
 
-            setTimeout(function () {
-                errorMessage.style.display = 'none';
-            }, 2000);
+        // Validate name
+        if (nameInput.value.length > 15) {
+            nameInput.setCustomValidity('Name must not exceed 15 characters');
+            showError('Name must not exceed 15 characters');
+            return;
+        } else {
+            nameInput.setCustomValidity('');
         }
-    });
-});
 
+        // Validate email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailInput.setCustomValidity('Invalid email address');
+            showError('Invalid email address');
+            return;
+        } else {
+            emailInput.setCustomValidity('');
+        }
+
+        // Validate password
+        const password = passwordInput.value;
+        const hasNumber = /\d/.test(password);
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        if (password.length > 20) {
+            passwordInput.setCustomValidity('Password must not exceed 20 characters');
+            showError('Password must not exceed 20 characters');
+            return;
+        } else if (!hasNumber || !hasLowercase || !hasUppercase) {
+            passwordInput.setCustomValidity('Password must contain at least one number, one lowercase letter, and one uppercase letter');
+            showError('Password must contain at least one number, one lowercase letter, and one uppercase letter');
+            return;
+        } else {
+            passwordInput.setCustomValidity('');
+        }
+
+        // Validate confirm password
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            confirmPasswordInput.setCustomValidity('Passwords must match');
+            showError('Passwords must match');
+            return;
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+        }
+
+        // If all validations pass, submit the form
+        event.target.closest('form').submit();
+    });
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+
+        setTimeout(function () {
+            errorMessage.style.display = 'none';
+        }, 3000);
+    }
+});

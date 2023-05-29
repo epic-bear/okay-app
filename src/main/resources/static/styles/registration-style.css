@@ -57,13 +57,24 @@ form button {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, cursor 0.3s ease;
+}
+
+form button:hover {
+    background-color: #F4FFFDFF;
+    color: #011936FF;
+    cursor: pointer;
 }
 
 #error-message {
     display: none;
-    color: #ED254EFF;
-    background-color: #011936FF;
+    color: #F4FFFDFF;
+    background-color: #ED254EFF;
     padding: 5px;
     border-radius: 30px;
-    margin-top: 5px;
+    margin-top: 10px;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
