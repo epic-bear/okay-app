@@ -19,9 +19,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/createUser")
+    @GetMapping("/registration")
     public String getCreateUserPage() {
         return "createUser";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "loginPage";
     }
 
     @PostMapping

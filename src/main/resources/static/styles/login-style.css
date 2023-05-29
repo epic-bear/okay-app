@@ -1,0 +1,83 @@
+body {
+    color: #F4FFFDFF;
+    background-color: #011936FF;
+    font-family: Arial, sans-serif;
+}
+input {
+    border-radius: 15px;
+    border: none;
+    color: #011936FF;
+    font-size: 15px;
+    width: 200px;
+    height: 30px;
+}
+h1 {
+    margin-top: 30px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    margin: 150px auto 0;
+    background-color: #ED254EFF;
+    color: #011936FF;
+    border-radius: 40px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-row label {
+    width: 120px;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="password"] {
+    flex: 1;
+}
+
+form button {
+    background-color: #F9DC5CFF;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    margin-top: 190px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, cursor 0.3s ease;
+}
+
+form button:hover {
+    background-color: #F4FFFDFF;
+    color: #011936FF;
+    cursor: pointer;
+}
+
+#error-message {
+    display: none;
+    color: #F4FFFDFF;
+    background-color: #ED254EFF;
+    padding: 5px;
+    border-radius: 30px;
+    margin-top: 10px;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
